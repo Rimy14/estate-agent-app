@@ -2,9 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    
+    <!-- Security: Content Security Policy - UPDATED to allow Google Maps -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com *.google.com; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https: blob: https://maps.googleapis.com https://maps.gstatic.com *.google.com *.gstatic.com; 
+                   connect-src 'self' https://maps.googleapis.com *.google.com; 
+                   frame-src 'self' https://www.google.com https://maps.google.com https://www.openstreetmap.org;">
+    
+    <!-- Security: Prevent clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    
+    <!-- Security: XSS Protection -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- Security: XSS Protection (Legacy) -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Security: Referrer Policy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>estate-agent-app</title>
+    <title>Estate Agent App - Property Search & Listings</title>
+    <meta name="description" content="Search and find your dream property with advanced filtering options.">
   </head>
   <body>
     <div id="root"></div>
