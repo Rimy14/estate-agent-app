@@ -1,0 +1,8 @@
+Github Repository link:
+https://github.com/Rimy14/estate-agent-app.git
+
+Deployment link:
+https://estate-agent-app.netlify.app/
+
+Name: M.N.M.Rimaz
+ID: W2120310 / 20231917
