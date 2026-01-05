@@ -5,6 +5,10 @@ import { Search, Home, Star, TrendingUp } from '@mui/icons-material';
 import { pageVariants, fadeInUp } from '../styles/animations';
 
 const HomePage = () => {
+  /**
+   * title with introdoction of the application
+   * Each feature includes an icon, title, and description
+   */
   const features = [
     {
       icon: <Search sx={{ fontSize: 48 }} />,
@@ -29,30 +33,37 @@ const HomePage = () => {
   ];
 
   return (
+    // Page wrapper with entrance/exit animations
     <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
     >
-      {/* Hero Section */}
+      
+      {/* ==================== HERO SECTION ==================== */}
+      {/* Main landing section with gradient background and hero content */}
       <Box
         sx={{
           background: 'linear-gradient(135deg, #1a237e 0%, #0d1442 100%)',
           color: 'white',
-          py: { xs: 8, md: 15 },
+          py: { xs: 8, md: 15 }, // Responsive padding
           position: 'relative',
           overflow: 'hidden',
         }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="center">
+            
+            {/* Left column: Hero text and CTA buttons */}
             <Grid item xs={12} md={7}>
               <motion.div variants={fadeInUp}>
+                
+                {/* Main headline */}
                 <Typography
                   variant="h1"
                   sx={{
-                    fontSize: { xs: '2.5rem', md: '3.5rem' },
+                    fontSize: { xs: '2.5rem', md: '3.5rem' }, // Responsive font size
                     fontWeight: 800,
                     mb: 2,
                     lineHeight: 1.2,
@@ -60,6 +71,8 @@ const HomePage = () => {
                 >
                   Find Your Dream Home
                 </Typography>
+                
+                {/* Hero subheading */}
                 <Typography
                   variant="h5"
                   sx={{
@@ -72,8 +85,15 @@ const HomePage = () => {
                   Discover the perfect property with our advanced search features. Browse
                   houses, flats, and more across London's premium locations.
                 </Typography>
+                
+                {/* CTA buttons container */}
                 <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  
+                  {/* Primary CTA: Search Properties button */}
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }} // Scale up on hover
+                    whileTap={{ scale: 0.95 }}   // Scale down on click
+                  >
                     <Button
                       component={Link}
                       to="/search"
@@ -96,7 +116,12 @@ const HomePage = () => {
                       Search Properties
                     </Button>
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  
+                  {/* Secondary CTA: Learn More button */}
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }} 
+                    whileTap={{ scale: 0.95 }}
+                  >
                     <Button
                       variant="outlined"
                       size="large"
@@ -120,15 +145,19 @@ const HomePage = () => {
                 </Box>
               </motion.div>
             </Grid>
+            
+            {/* Right column: Hero image */}
             <Grid item xs={12} md={5}>
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: 50 }}  // Start off-screen to the right
+                animate={{ opacity: 1, x: 0 }}   // Slide in animation
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
+                {/* Image container with decorative background element */}
                 <Box
                   sx={{
                     position: 'relative',
+                    // Decorative gradient background behind image
                     '&::before': {
                       content: '""',
                       position: 'absolute',
@@ -142,10 +171,11 @@ const HomePage = () => {
                     },
                   }}
                 >
+                  {/* Hero image*/}
                   <Box
                     component="img"
-                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
-                    alt="Modern house"
+                    src="/images/hero.jpg"
+                    alt="Modern luxury house with contemporary architecture"
                     sx={{
                       width: '100%',
                       borderRadius: 4,
@@ -160,8 +190,11 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      {/* Features Section */}
+      {/* ==================== FEATURES SECTION ==================== */}
+      {/* Showcases the main features and benefits of the application */}
       <Container maxWidth="lg" sx={{ py: 10 }}>
+        
+        {/* Features section header */}
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Typography
             variant="h2"
@@ -173,20 +206,26 @@ const HomePage = () => {
           >
             Why Choose Prime Estate?
           </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
+          <Typography 
+            variant="h6" 
+            color="text.secondary" 
+            sx={{ maxWidth: 600, mx: 'auto' }}
+          >
             We provide the best tools and features to help you find your perfect property
           </Typography>
         </Box>
 
+        {/* Features grid - responsive layout */}
         <Grid container spacing={4}>
           {features.map((feature, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
+              {/* Animated feature card */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
+                initial={{ opacity: 0, y: 30 }}  // Start below and transparent
+                whileInView={{ opacity: 1, y: 0 }} // Fade in and slide up when in viewport
+                transition={{ duration: 0.5, delay: index * 0.1 }} // Staggered animation
+                viewport={{ once: true }} // Only animate once
+                whileHover={{ y: -8 }}   // Lift effect on hover
               >
                 <Card
                   sx={{
@@ -196,11 +235,13 @@ const HomePage = () => {
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
                     transition: 'all 0.3s',
                     '&:hover': {
-                      boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+                      boxShadow: '0 8px 30px rgba(0,0,0,0.12)', // Enhanced shadow on hover
                     },
                   }}
                 >
                   <CardContent sx={{ p: 4 }}>
+                    
+                    {/* Feature icon circle */}
                     <Box
                       sx={{
                         width: 80,
@@ -216,9 +257,13 @@ const HomePage = () => {
                     >
                       {feature.icon}
                     </Box>
+                    
+                    {/* Feature title */}
                     <Typography variant="h5" fontWeight={600} gutterBottom>
                       {feature.title}
                     </Typography>
+                    
+                    {/* Feature description */}
                     <Typography variant="body2" color="text.secondary" lineHeight={1.7}>
                       {feature.description}
                     </Typography>
@@ -230,7 +275,8 @@ const HomePage = () => {
         </Grid>
       </Container>
 
-      {/* CTA Section */}
+      {/* ==================== BOTTOM CTA SECTION ==================== */}
+      {/* Final call-to-action section with gradient background */}
       <Box
         sx={{
           background: 'linear-gradient(135deg, #f50057 0%, #ff4081 100%)',
@@ -240,13 +286,22 @@ const HomePage = () => {
       >
         <Container maxWidth="md">
           <Box sx={{ textAlign: 'center' }}>
+            
+            {/* CTA heading */}
             <Typography variant="h3" fontWeight={700} gutterBottom>
               Ready to Find Your Perfect Home?
             </Typography>
+            
+            {/* CTA subtext */}
             <Typography variant="h6" sx={{ mb: 4, opacity: 0.95 }}>
               Start searching through our collection of premium properties today
             </Typography>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            
+            {/* CTA button with hover animation */}
+            <motion.div 
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }}
+            >
               <Button
                 component={Link}
                 to="/search"
